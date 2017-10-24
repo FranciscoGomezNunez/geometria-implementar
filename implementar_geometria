@@ -1,0 +1,598 @@
+Figura Ate;
+Figura Mariana;
+Figura Liz;
+Figura Pau;
+Figura Ana;
+Figura Pili;
+Figura Ari;
+Figura Xime;
+Figura Cinthi;
+Figura Gaby;
+
+int mostrar;
+
+ArrayList <Figura> Figuras;
+void setup()
+{
+  size(400,400);
+  Ate = new Triangulo((width/2)-50,(height/2)+50,100);
+  Mariana= new Cuadrado(width/2,height/2,50);
+  Liz = new Rectangulo(width/2,height/2,100,50);
+  Pau = new Circulo(width/2,height/2,25);
+  Ana = new Pentagono(width/2,height/2,50);
+  Pili = new Hexagono(width/2,height/2,50);
+  Ari = new Heptagono(width/2,height/2,50);
+  Xime = new Octagono(width/2,height/2,50);
+  Cinthi = new Eneagono(width/2,height/2,50);
+  Gaby = new Decagono(width/2,height/2,50);
+  Figuras = new ArrayList<Figura>();
+  Figuras.add(Ate);
+  Figuras.add(Mariana);
+  
+  
+  
+  
+  
+}
+
+void draw ()
+{
+ background(127);
+ noStroke();
+ fill(255);
+ textAlign(LEFT);
+ text("Para mostrar las figuras, presiona la tecla correspondiente al número", 10, 20);
+ text("de figura:",10,30);
+ text("1=Triángulo, 2=Cuadrado, 3=Rectángulo, 4=Círculo, 5=Pentagono...", 10,45);
+ text("6=Hexagono, 7=Heptagono, 8=Octagono, 9=Eneagono, 10=Decagono.", 10,55);
+ text("Presiona cualquier otra tecla para limpiar el espacio.",10,70);
+ fill(0);
+ 
+ switch(key)
+ {
+   case '1':
+ Ate.display();
+ Ate.girar();
+ break;
+ case '2':
+ Mariana.display();
+ Mariana.girar();
+ break;
+ case '3':
+ Liz.display();
+ Liz.girar();
+ break;
+ case '4':
+ Pau.display();
+ Pau.girar();
+ break;
+ case '5':
+ Ana.display();
+ Ana.girar();
+ break;
+ case '6':
+ Pili.display();
+ Pili.girar();
+ break;
+ case '7':
+ Ari.display();
+ Ari.girar();
+ break;
+ case '8':
+ Xime.display();
+ Xime.girar();
+ break;
+ case '9':
+ Cinthi.display();
+ Cinthi.girar();
+ break;
+ case '0': 
+ Gaby.display();
+ Gaby.girar();
+ break ;
+ }
+ 
+}
+
+//Figuras Geométricas Planas\\//Perimetro y Área\\ //Generar un interfaz\\
+
+interface Figura
+{
+ float perimetro();
+ float area();
+ void display();
+ void girar();
+}
+
+class Triangulo implements Figura
+{
+  float x,y,b,h,l1,a,o,n;
+  
+  
+  Triangulo(float x_, float y_, float l1_)
+  {
+    x=x_;
+    y=y_;
+    b=l1;
+    h=0.8660254037844386*l1;
+    l1=l1_;
+    a=0.16666666666667*TWO_PI;
+    n=sin(a)*l1;
+    o=cos(a)*l1;
+  }
+  
+  float perimetro()
+  {
+   return l1*3; 
+  }
+  
+  float area ()
+  {
+    return (0.8660254037844386*l1*l1)/2;
+  }
+  
+  void display()
+  {
+    
+    fill(255,0,0);
+    triangle(x,y,x+l1,y,x+o,y-n);
+    
+    fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Ate.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Ate.area(),width/2,height-5);
+  }
+  
+  void girar()
+  {
+    a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+  }
+  
+  
+}
+
+class Cuadrado implements Figura
+  {
+    float x,y,l;
+    float a;
+    
+    Cuadrado(float x_, float y_,float l_)
+    {
+      x=x_;
+      y=y_;
+      l=l_;
+      a= 0.125*TWO_PI;
+    }
+    float perimetro()
+    {
+     return l*4; 
+    }
+    
+    float area()
+    {
+      return l*l;
+    }
+    
+    void display()
+    {
+      fill(255,127,0);
+      rect(x-(l/2),y-(l/2),l,l);
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Mariana.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Mariana.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+    a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+    }
+  }
+  
+  class Rectangulo implements Figura
+  {
+    float x,y,b,h,a;
+    Rectangulo(float x_, float y_,float b_, float h_)
+    {
+      x=x_;
+      y=y_;
+      b=b_;
+      h=h_;
+      a=0.125*TWO_PI;
+    }
+    float perimetro()
+    {
+     return 2*b+2*h; 
+    }
+    
+    float area()
+    {
+      return b*h;
+    }
+    
+    void display()
+    {
+      fill(255,255,0);
+      rect(x-(b/2),y-(h/2),b,h);
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Liz.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Liz.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+     a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a); 
+    }
+  }
+  
+  class Circulo implements Figura
+  {
+    float x,y,r,a;
+    Circulo(float x_, float y_,float r_)
+    {
+      x=x_;
+      y=y_;
+      r=r_;
+      a=0.125*TWO_PI;
+    }
+    float perimetro()
+    {
+     return PI*r*2; 
+    }
+    
+    float area()
+    {
+      return PI*r*r;
+    }
+    
+    void display()
+    {
+      fill (127,255,0);
+      ellipse(x,y,r*2,r*2);
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Pau.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Pau.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+      a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+    }
+  }
+  
+   class Pentagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n,an;
+    Pentagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/5;
+      l=(2*apo)*sin(PI/5);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+      an=0.125*TWO_PI;
+    }
+    float perimetro()
+    {
+     return l*5; 
+    }
+    
+    float area()
+    {
+      return l*5*apo;
+    }
+    
+    void display()
+    {
+      fill (0,255,0);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Ana.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Ana.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+      an+=0.05;
+    x=x+cos(an);
+    y=y+sin(an);
+    }
+  }
+  
+  class Hexagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n;
+    Hexagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/6;
+      l=(2*apo)*sin(PI/6);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+    }
+    float perimetro()
+    {
+     return l*6; 
+    }
+    
+    float area()
+    {
+      return l*6*apo;
+    }
+    
+    void display()
+    {
+      fill (0,255,127);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Pili.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Pili.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+      a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+    }
+  }
+  
+  class Heptagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n;
+    Heptagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/7;
+      l=(2*apo)*sin(PI/7);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+    }
+    float perimetro()
+    {
+     return l*7; 
+    }
+    
+    float area()
+    {
+      return l*7*apo;
+    }
+    
+    void display()
+    {
+      fill (0,255,255);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Ari.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Ari.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+      a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+    }
+  }
+  
+  class Octagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n;
+    Octagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/8;
+      l=(2*apo)*sin(PI/8);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+    }
+    float perimetro()
+    {
+     return l*8; 
+    }
+    
+    float area()
+    {
+      return l*8*apo;
+    }
+    
+    void display()
+    {
+      fill (0,127,255);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Xime.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Xime.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+     a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a); 
+    }
+  }
+  
+  class Eneagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n;
+    Eneagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/9;
+      l=(2*apo)*sin(PI/9);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+    }
+    float perimetro()
+    {
+     return l*9; 
+    }
+    
+    float area()
+    {
+      return l*9*apo;
+    }
+    
+    void display()
+    {
+      fill (0,0,255);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Cinthi.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Cinthi.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+     a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a); 
+    }
+  }
+  
+  class Decagono implements Figura
+  {
+    float x,y,l,apo,a,apoli,o,n;
+    Decagono(float x_, float y_, float apo_)
+    {
+      x=x_;
+      y=y_;
+      apo=apo_;
+      apoli=TWO_PI/10;
+      l=(2*apo)*sin(PI/10);
+      n=sin(a)*apo;
+      o=cos(a)*apo;
+    }
+    float perimetro()
+    {
+     return l*10; 
+    }
+    
+    float area()
+    {
+      return l*10*apo;
+    }
+    
+    void display()
+    {
+      fill (127,0,255);
+      beginShape();
+      for(float a = 0;a<TWO_PI;a+=apoli)
+      {
+        
+        o=x + cos(a)*apo;
+        n=x + sin(a)*apo;
+        vertex(o,n);
+        
+      }
+      endShape(CLOSE);
+     
+      fill(255);
+      textAlign(CENTER);
+      text("Perimetro=",width/2,height-50);
+      text(Gaby.perimetro(),width/2,height-35);
+      text("Área=",width/2,height-20);
+      text(Gaby.area(),width/2,height-5);
+    }
+    
+    void girar()
+    {
+      a+=0.05;
+    x=x+cos(a);
+    y=y+sin(a);
+    }
+  }
